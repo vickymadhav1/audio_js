@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+  <link rel="stylesheet" type="text/css" href="style2.css">
+  <!-- <link rel="stylesheet" type="text/css" href="audiowaves.css"> -->
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js" type="text/javascript"></script>
+  
+
+
+  <script>
+    $(window).load(function(){        
+   $('#myModal').modal('show');
+    }); 
+  </script>
+  <script>
+    $(function () {
+      $('#form_submitBtn').click(function () {
+        var x = document.getElementById("birthPlace");
+        var y = document.getElementById("age");
+        var z = document.getElementsByClassName("AudioSection");
+        if ($(x).val() == '' || $(y).val() == '' || $(y).val() == '0') {
+          $('.enableOnInput').prop('disabled', true);
+          alert("Enter all Fields. Age must be VALID");
+          $(x).css("border", "red solid 1px");
+          $(y).css("border", "red solid 1px");
+        } else {
+          $(x).css("border", "#5cb85c solid 1px");
+          $(y).css("border", "#5cb85c solid 1px");
+          $('.enableOnInput').prop('disabled', false);
+		  mycall();
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Achyutas</a>
+    </nav>
+	  <form class="my_form">
+        <div class="modal" id="myModal" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i>Enter Your details</h4>
+              </div>
+              <div class="modal-body">
+                <div class="container center_div">
+                  <form id="submitForm">
+                    <div class="row">
+                      <div class="col-25">
+                        <label for="country">Gender</label>
+                      </div>
+                      <div class="col-75">
+                        <select id="country" required name="country">
+                            <option value="">select</option>
+                          <option value="australia">Male</option>
+                          <option value="canada">Female</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-25">
+                        <label for="fname">Place of birth</label>
+                      </div>
+                      <div class="col-75">
+                        <input type="text" pattern='[A-Za-z\\s]*' id="birthPlace" name="firstname"
+                          class="form-control required" placeholder="Enter your place of birth.." required />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-25">
+                        <label for="lname">Age</label>
+                      </div>
+                      <div class="col-75">
+                        <input type="number" required id="age" min="0" class="form-control required" name="lastname"
+                          placeholder="Enter your Age.." required />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="m-auto text-center">
+                  <div class="btn btn-success enableOnInput" type="submit" data-backdrop="static" data-keyboard="false"
+                    id="form_submitBtn" data-dismiss="modal">Start Recordings</div>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+    </form>
+    <h3>Record your next the Audio Clip</h3>
+    <div class="row">
+
+      <div class="col-sm-8">
+
+        <div class="jumbotron text-center">
+          <div id="read_text">
+            <p id="p_tag">
+            </p>
+          </div>
+        </div>
+        <div id="controls">
+          <button id="recordButton" class="btn btn-primary">Record</button>
+          <button id="pauseButton" class="btn btn-secondary" disabled style="display: none;">Pause</button>
+          <button id="stopButton" class="btn btn-success" disabled>Stop</button>
+          <button id="submitButton" class="btn btn-success" disabled>Submit</button>
+        </div>
+        <div id="formats"></div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Recordings</h3>
+        <ol id="recordingsList"></ol>
+      </div>
+      <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+      <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+      <script src="js/app.js"></script>
+    </div>
+  </div>
+  </div>
+  <div class="footer">
+    <img src="8.png" id="#image" class="img-fluidalt=" Girl in a jacket" width="85%" height="150px">
+  </div>
+  <div class="container">
+    <div class="col-sm-8" style="border:0px solid grey"></div>
+  </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+body {
+  background-color: #6a6e76;
+  margin: 10% 2px 5px 2px;
+}
+
+.header {
+  width: 100%;
+  padding:;
+  margin: auto;
+}
+
+.svg1 {
+  
+  fill: rgba(40, 40, 50, 0.3);
+  stroke-width: 2;
+  width: 100%;
+  stroke-dasharray: 0 3000;
+  animation: pulse1 3s linear infinite;
+  z-index: 1;
+}
+
+@keyframes pulse1 {
+  from {
+    stroke-dasharray: 0 3000;
+  }
+  to {
+    stroke-dasharray: 3000 0;
+  }
+}
